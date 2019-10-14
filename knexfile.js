@@ -1,3 +1,4 @@
+require('dotenv').config()
 // Database, Migration and Seed Setup
 module.exports = {
 
@@ -16,7 +17,7 @@ module.exports = {
 
   production: {
     client: 'pg',
-    connection: process.env.DATABASE_URL,
+    connection: process.env.SIMPLE_DATABASE_URL,
     ssl: true,
     pool: {
       min: 2,
@@ -26,7 +27,7 @@ module.exports = {
         directory: __dirname + '/db/migrations',
     },
     seeds: {
-        directory: __dirname + '/db/seeds/production',
+        directory: __dirname + '/db/seeds',
     }
   }
 
