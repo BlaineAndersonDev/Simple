@@ -724,4 +724,6 @@
       * `pm2 kill [name/id]`
     * Show the last 15 lines of logs for pm2 tailing, and for npm output [optional increase to 200 lines]:
       * `pm2 logs [--lines 200]`
+    * Restart the selected pm2 app:
+      * `pm2 restart (appName)`
   * That should do it. App safely running with 'minimal' chance of failure! A+!
