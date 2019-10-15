@@ -701,3 +701,27 @@
   * Moment of truth. Upon startup, the migrations and seeds should have run. Now we want to call the seeded data via the API using POSTman:
     * `<DropletIp>:5000/api/database/examples`
   * Voila! You have successfully setup both an API and a PostgreSQL Database in the cloud!
+
+## Ensuring the API continues to run on restarts and crashes
+  * So now that everything is connected, we have to make sure it stays functional in worst case scenarios.
+  * In the API directory, using the droplets terminal, install pm2 (Program Manager 2)[https://pm2.keymetrics.io/docs/usage/pm2-doc-single-page/]
+    * `npm install pm2`
+  * Now we need to run it with specific instructions to use OUR package.json script, not the pm2 default:
+    * `pm2 start npm -- start`
+    * `pm2 start npm -- [ScriptName]`
+  * Check the API using POSTman (make sure to check the database connection, thats the important bit)
+  * Provided everything works, we now neet to tell pm2 to start back up on restarts or crashes:
+    * `pm2 startup systemd`
+    * This will tell pm2 that this process should never be offline.
+  * A list of useful commands to keep the app running using only basics:
+    * Start pm2 using a specific package.json script:
+      * `pm2 start npm -- start`
+    * Set the currently running 'app' to reload on restart or crash:
+      * `pm2 startup systemd`
+    * Monitor the usage and console of any running pm2 apps:
+      * `pm2 monit`
+    * Stop an app / all apps:
+      * `pm2 kill [name/id]`
+    * Show the last 15 lines of logs for pm2 tailing, and for npm output [optional increase to 200 lines]:
+      * `pm2 logs [--lines 200]`
+  * That should do it. App safely running with 'minimal' chance of failure! A+!
