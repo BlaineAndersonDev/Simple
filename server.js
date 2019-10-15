@@ -20,7 +20,7 @@ const morgan = require('morgan')
 // Initialize the 'app' using 'express'.
 const app = express();
 // Use the provided PORT if it exists else default to PORT 5000.
-const port = process.env.PORT || 5000;
+const port = 5000;
 // Allows the app to parse 'application/json' request bodies.
 app.use(express.json());
 // Allows the app to parse 'x-ww-form-urlencoded' request bodies.
