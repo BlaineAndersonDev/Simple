@@ -38,7 +38,16 @@ const knexSetup = async () => {
     await knexSeeds(false)
   }
   console.log('>>> Knex Setup Completed <<<')
-}
+};
+
+// On API startup, this will run knex migrate:rollback
+// !!!ONLY EVER USE THIS IN DEVELOPMENT!!!
+// const knexRollback = async () => {
+//   console.log('>>> Running `knex migrate:rollback`... <<<')
+//   await database.migrate.rollback('production')
+//   console.log('>>> Rollback Complete. <<<')
+// };
+// knexRollback();
 
 knexSetup();
 
