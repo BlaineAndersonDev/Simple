@@ -20,3 +20,12 @@
     "start": "NODE_ENV=production node server.js"
   }
 }
+Keep it running
+Your site is live, but once you close the terminal, your server will stop. This is a problem, so we’ll want to install some more software that will tell the server not to stop once the connection is terminated. There are some options for this, but let’s use Program Manager 2 for the sake of this article.
+
+Kill your server if you haven’t already and run npm install -g pm2. Once installed, we can tell it to run our server using pm2 start server/index.js
+
+Updating your code
+At some point, you’ll probably want to update your project, but luckily uploading changes is quick and easy. Once you push your code to Github, ssh into your Droplet and cd into your project directory. Because we cloned from Github initially, we don’t need to provide any links this time. You can pull down the new code simply by running git pull.
+
+To incorporate frontend changes, you will need to run the build process again with npm run build. If you’ve made changes to the server file, restart PM2 by running pm2 restart all. That’s it! Your updates should be live now.
